@@ -22,7 +22,7 @@ def _get_char(r, g, b, alpha=256):
 
 def pic_to_ascii(path, width=80, height=80):
     with open(path, "rb") as IMG:
-        img = Image.open(IMG)
+        img = Image.open(IMG)  # 默认返回灰度图
         img = img.resize((width, height), Image.NEAREST)
         img = img.convert('RGBA')
 
