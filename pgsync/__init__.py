@@ -30,14 +30,15 @@ def get_log(filepath, consumer):
 
 def execute_sql(sql):
     try:
-        print(sql)
         conn = psycopg2.connect(**pgql)
         cur = conn.cursor()
         cur.execute(sql)
         cur.close()
         conn.commit()
+        print("SUCCESS: ", sql)
     except Exception as e:
-        print(e)
+        print("FAIL: ", sql)
+        print("ERROR: ", e)
     finally:
         if conn is not None:
             conn.close()
